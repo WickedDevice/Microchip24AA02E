@@ -1,10 +1,5 @@
 #include "Microchip24AA02E.h"
 
-Microchip24AA02E::Microchip24AA02E(const byte device_address) {
-  this->device_address = device_address;
-  _wire = &Wire;  
-}
-
 Microchip24AA02E(TwoWire *theWire = &Wire, const byte device_address = Microchip24AA02E_DEFAULT_DEVICE_ADDRESS) {
   this->device_address = device_address;
   _wire = theWire;  
