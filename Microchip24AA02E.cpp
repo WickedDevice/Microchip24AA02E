@@ -2,8 +2,14 @@
 
 Microchip24AA02E::Microchip24AA02E(const byte device_address) {
   this->device_address = device_address;
-  Wire.begin();
+  _wire = &Wire;  
 }
+
+Microchip24AA02E(TwoWire *theWire = &Wire, const byte device_address = Microchip24AA02E_DEFAULT_DEVICE_ADDRESS) {
+  this->device_address = device_address;
+  _wire = theWire;  
+}
+
 
 const void Microchip24AA02E::readMac48(mac48 mac_address)  const {
   readMac48(mac_address, readDeviceAddress());
@@ -34,13 +40,13 @@ const byte Microchip24AA02E::readDeviceAddress() const {
 }
 
 const byte Microchip24AA02E::readRegister(const byte registry_address, const byte device_address) const {
-  Wire.beginTransmission(device_address);
-  Wire.write(registry_address);  // register to read
-  Wire.endTransmission();
+  _wire->beginTransmission(device_address);
+  _wire->write(registry_address);  // register to read
+  _wire->endTransmission();
 
-  Wire.requestFrom(device_address, (byte)1); // read a byte
-  while (!Wire.available()) { }
-  return Wire.read();
+  _wire->requestFrom(device_address, (byte)1); // read a byte
+  while (!_wire->available()) { }
+  return _wire->read();
 }
 
 Microchip24AA02E MacReader = Microchip24AA02E();

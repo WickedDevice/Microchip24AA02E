@@ -11,7 +11,8 @@ typedef byte mac64[8];
 
 class Microchip24AA02E {
   public:
-    Microchip24AA02E(const byte = Microchip24AA02E_DEFAULT_DEVICE_ADDRESS);
+    Microchip24AA02E(const byte device_address = Microchip24AA02E_DEFAULT_DEVICE_ADDRESS);
+    Microchip24AA02E(TwoWire *theWire = &Wire, const byte device_address = Microchip24AA02E_DEFAULT_DEVICE_ADDRESS);
     const void readMac48(mac48) const;
     const void readMac48(mac48, const byte) const;
 
@@ -22,6 +23,8 @@ class Microchip24AA02E {
   private:
     const byte readRegister(const byte, const byte) const;
     byte device_address;
+
+    TwoWire *_wire;                     /**< Wire object */
 };
 
 extern Microchip24AA02E MacReader;
