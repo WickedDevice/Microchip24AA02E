@@ -20,7 +20,7 @@ class Microchip24AA02E {
 
     const byte readDeviceAddress() const;
   private:
-    const byte readRegister(const byte, const byte) const;
+    const byte readRegister(const byte, const byte, const uint32_t = 100) const;
     byte device_address;
 
     TwoWire *_wire;                     /**< Wire object */
