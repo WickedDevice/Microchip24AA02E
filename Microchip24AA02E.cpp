@@ -44,4 +44,4 @@ const byte Microchip24AA02E::readRegister(const byte registry_address, const byt
   return _wire->read();
 }
 
-Microchip24AA02E MacReader = Microchip24AA02E();
+// Microchip24AA02E MacReader = Microchip24AA02E();
