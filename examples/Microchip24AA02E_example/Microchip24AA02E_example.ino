@@ -1,5 +1,6 @@
 #include "Microchip24AA02E.h"
 
+Microchip24AA02E MacReader = Microchip24AA02E();
 mac48 mac;
 
 void setup() {

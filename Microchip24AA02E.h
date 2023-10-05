@@ -26,5 +26,5 @@ class Microchip24AA02E {
     TwoWire *_wire;                     /**< Wire object */
 };
 
-extern Microchip24AA02E MacReader;
+// extern Microchip24AA02E MacReader;
 #endif
